@@ -31,7 +31,7 @@ ORO_NAME="${CTAR}.mx${OCNRES}_oro_data"
 # latest orog version (20231027), need to use a previous version.
 #---------------------------------------------------------------------------
 
-if [ "$machine" = 'hera' ] ; then
+if [ "$machine" = 'HERA' ] ; then
   FIX_ORO_INPUT=/scratch1/NCEPDEV/global/glopara/fix/orog/20230615
 elif [ "$machine" = 'wcoss2' ] ; then
   FIX_ORO_INPUT=/lfs/h2/emc/global/noscrub/emc.global/FIX/fix/orog/20230615

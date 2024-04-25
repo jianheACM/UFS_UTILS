@@ -81,6 +81,7 @@ cat << EOF > fort.41
  convert_nst=.true.
  tracers="sphum","liq_wat","o3mr","ice_wat","rainwat","snowwat","graupel"
  tracers_input="sphum","liq_wat","o3mr","ice_wat","rainwat","snowwat","graupel"
+ thomp_mp_climo_file="${FIX_AM}/Thompson_MP_MONTHLY_CLIMO.nc"
 /
 EOF
 
@@ -91,7 +92,7 @@ if [ $rc != 0 ]; then
   exit $rc
 fi
 
-$GDAS_INIT_DIR/copy_coldstart_files.sh $MEMBER $OUTDIR $yy $mm $dd $hh $RADSTAT_DATA_DIR
+$GDAS_INIT_DIR/copy_coldstart_files.sh $MEMBER $OUTDIR $yy $mm $dd $hh $RADSTAT_DATA_DIR $ICSDIR
 
 rm -fr $WORKDIR
 
