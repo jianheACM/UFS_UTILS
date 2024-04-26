@@ -10,9 +10,15 @@ copy_data()
 
   MEM=$1
 
-  SAVEDIR_MODEL_DATA=$SUBDIR/model_data/atmos/input
+  #JKHSAVEDIR_MODEL_DATA=$SUBDIR/model_data/atmos/input
+  SAVEDIR_MODEL_DATA=${ICSDIR}/${yy}${mm}${dd}${hh}/${CDUMP}/${CASE}/INPUT
   mkdir -p $SAVEDIR_MODEL_DATA
   cp gfs_ctrl.nc $SAVEDIR_MODEL_DATA
+  touch $SAVEDIR_MODEL_DATA/chgres_done                 ## JKH
+
+  TMPDIR=$SUBDIR/model_data/atmos
+  mkdir -p $TMPDIR
+  ln -fs $SAVEDIR_MODEL_DATA $TMPDIR/input
 
   for tile in 'tile1' 'tile2' 'tile3' 'tile4' 'tile5' 'tile6'
   do
@@ -37,6 +43,7 @@ mm=$4
 dd=$5
 hh=$6
 INPUT_DATA_DIR=$7
+ICS_DIR=$8
 
 if [ ${MEMBER} == 'hires' ]; then
   MEMBER='gdas'
