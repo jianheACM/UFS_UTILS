@@ -14,7 +14,7 @@ FIX_AM=${FIX_FV3}/am
 WORKDIR=${WORKDIR:-$OUTDIR/work.gfs}
 
 CTAR=${CRES_HIRES}
-INPUT_DATA_DIR="${EXTRACT_DIR}/gfs.${yy}${mm}${dd}/${hh}/atmos"
+INPUT_DATA_DIR="${EXTRACT_DIR}/gfs.${yy}${mm}${dd}/${hh}"
 ATMFILE="gfs.t${hh}z.atmanl.nemsio"
 SFCFILE="gfs.t${hh}z.sfcanl.nemsio"
 
