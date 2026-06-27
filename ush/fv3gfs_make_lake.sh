@@ -9,10 +9,10 @@ set -eux
 outdir=$orog_dir
 indir=$topo
 
-if [ $gtype != uniform ] && [ $gtype != regional_gfdl ]; then
-  echo "lakefrac has only been implemented for 'uniform' and 'regional_gfdl'."
-  exit 0
-fi
+#if [ $gtype != uniform ] && [ $gtype != regional_gfdl ]; then
+#  echo "lakefrac has only been implemented for 'uniform' and 'regional_gfdl'."
+#  exit 0
+#fi
 echo "lake_data_srce = $lake_data_srce"
 if [ $lake_data_srce == MODISP_GLDBV3 ]; then
   lakestatusrc="MODISP"
@@ -62,7 +62,7 @@ cd $workdir
 # link all required files to the current work directory
 
 
-if [ $gtype == uniform ]; then
+if [ $gtype == uniform ] || [ $gtype == stretch ]; then
   tile_beg=1
   tile_end=6
   tile=$tile_beg
@@ -89,7 +89,7 @@ fi
 
 cutoff=0.75
 rd=7
-if [ $gtype == uniform ]; then
+if [ $gtype == uniform ] || [ $gtype == stretch ] ; then
   $APRUN $exe_inland $res $cutoff $rd g
 fi
 if [ $gtype == regional_gfdl ]; then

@@ -15,7 +15,7 @@ module load build.$target.$compiler
 module load prod_util/2.1.1
 module list
 
-PROJECT_CODE=fv3-cpu
+PROJECT_CODE=rcm2
 QUEUE=batch
 
 export machine=ursa

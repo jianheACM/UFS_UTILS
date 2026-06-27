@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #SBATCH -J fv3_grid_driver
-#SBATCH -A fv3-cpu
+#SBATCH -A rcm2
 #SBATCH --open-mode=truncate
 #SBATCH -o log.fv3_grid_driver
 #SBATCH -e log.fv3_grid_driver
-#SBATCH --nodes=4 --ntasks-per-node=12
-#SBATCH --mem=300g
+#SBATCH --nodes=8 --ntasks-per-node=6
+##SBATCH --mem=300g
 #SBATCH -q debug
 #SBATCH -t 00:30:00
 
@@ -73,13 +73,13 @@ module list
 # Set grid specs here.
 #-----------------------------------------------------------------------
 
-export gtype=uniform           # 'uniform', 'stretch', 'nest', 
+export gtype=stretch           # 'uniform', 'stretch', 'nest', 
                                # 'regional_gfdl', 'regional_esg'.
 
-export make_gsl_orog=false     # When 'true' will output 'oro' files for
+export make_gsl_orog=true     # When 'true' will output 'oro' files for
                                # the GSL orographic drag suite.
 
-export vegsoilt_frac='.false.' # When .false., output dominant soil and 
+export vegsoilt_frac='.true.' # When .false., output dominant soil and 
                                # vegetation type category. When .true.,
                                # output fraction of each category and
                                # the dominant category. A Fortran logical,
@@ -116,10 +116,12 @@ if [ $gtype = uniform ]; then
   export binary_lake=1         # return 1 if lake_frac >= lake_cutoff & add_lake=T
   export ocn=${ocn:-"100"}     # use one of  "025", "050", "100", "500". Cannot be empty
 elif [ $gtype = stretch ]; then
-  export res=96
-  export stretch_fac=1.5       # Stretching factor for the grid
+  export res=384
+  export add_lake=true         # Add lake frac and depth to orography data.
+  export lake_cutoff=0.50      # return 0 if lake_frac <  lake_cutoff & add_lake=T
+  export stretch_fac=2.0       # Stretching factor for the grid
   export target_lon=-97.5      # Center longitude of the highest resolution tile
-  export target_lat=35.5       # Center latitude of the highest resolution tile
+  export target_lat=38.5       # Center latitude of the highest resolution tile
 elif [ $gtype = nest ] || [ $gtype = regional_gfdl ]; then
   export add_lake=false        # Add lake frac and depth to orography data.
   export lake_cutoff=0.20      # lake frac < lake_cutoff ignored when add_lake=T
@@ -157,8 +159,8 @@ fi
 #-----------------------------------------------------------------------
 
 export home_dir=$SLURM_SUBMIT_DIR/..
-export TEMP_DIR=/scratch4/NCEPDEV/stmp/$LOGNAME/fv3_grid.$gtype
-export out_dir=/scratch4/NCEPDEV/stmp/$LOGNAME/my_grids
+export TEMP_DIR=/scratch4/BMC/rcm1/jhe/ufschem/prep/stretch/fv3_grid.$gtype
+export out_dir=/scratch4/BMC/rcm1/jhe/ufschem/prep/stretch/my_grids
 
 #-----------------------------------------------------------------------
 # Should not need to change anything below here.

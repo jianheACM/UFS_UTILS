@@ -51,28 +51,28 @@
 #
 #-----------------------------------------------------------
 
-EXTRACT_DIR=/lfs/h2/emc/stmp/$USER/gdas.init/input
-EXTRACT_DATA=no
+EXTRACT_DIR=/scratch4/BMC/rcm1/jhe/ufschem/prep/stretch/gdas.init/input
+EXTRACT_DATA=yes
 
 RUN_CHGRES=yes
 
-yy=2022
-mm=01
-dd=01
-hh=06
+yy=2023
+mm=03
+dd=31
+hh=00
 
 use_v16retro=no
 
 LEVS=128
 
-CDUMP=gfs
+CDUMP=gdas
 
-CRES_HIRES=C192
-CRES_ENKF=C96
+CRES_HIRES=C384
+CRES_ENKF=C384
 
 UFS_DIR=$PWD/../..
 
-OUTDIR=/lfs/h2/emc/stmp/$USER/gdas.init/output
+OUTDIR=/scratch4/BMC/rcm1/jhe/ufschem/prep/stretch/gdas.init/output
 #---------------------------------------------------------
 # Dont touch anything below here.
 #---------------------------------------------------------

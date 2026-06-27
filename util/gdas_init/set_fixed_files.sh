@@ -28,7 +28,8 @@ else
 fi
 
 ORO_DIR="${CTAR}"
-ORO_NAME="${CTAR}.mx${OCNRES}_oro_data"
+#ORO_NAME="${CTAR}.mx${OCNRES}_oro_data"
+ORO_NAME="${CTAR}_oro_data"
 
 #---------------------------------------------------------------------------
 # When using the v15/v16 tiled warm restart data as input to the chgres
@@ -38,7 +39,8 @@ ORO_NAME="${CTAR}.mx${OCNRES}_oro_data"
 #---------------------------------------------------------------------------
 
 if [ "$machine" = 'ursa' ] ; then
-  FIX_ORO_INPUT=/scratch3/NCEPDEV/global/role.glopara/fix/orog/20230615
+  #FIX_ORO_INPUT=/scratch3/NCEPDEV/global/role.glopara/fix/orog/20230615
+  FIX_ORO_INPUT=/scratch4/BMC/rcm1/jhe/ufschem/prep/stretch/my_grids
 elif [ "$machine" = 'wcoss2' ] ; then
   FIX_ORO_INPUT=/lfs/h2/emc/global/noscrub/emc.global/FIX/fix/orog/20230615
 elif [ "$machine" = 'gaeac6' ] ; then
