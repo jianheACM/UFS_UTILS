@@ -1,14 +1,14 @@
 #!/bin/bash
 
 #SBATCH -J fv3_grid_driver
-#SBATCH -A rcm2
+#SBATCH -A rcm1
 #SBATCH --open-mode=truncate
 #SBATCH -o log.fv3_grid_driver
 #SBATCH -e log.fv3_grid_driver
 #SBATCH --nodes=8 --ntasks-per-node=6
-##SBATCH --mem=300g
-#SBATCH -q debug
-#SBATCH -t 00:30:00
+#SBATCH --exclusive           # Gives you exclusive access to all cores & RAM on the node
+#SBATCH -q batch
+#SBATCH -t 01:30:00
 
 #-----------------------------------------------------------------------
 # Driver script to create a cubic-sphere based model grid on Ursa.

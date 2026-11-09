@@ -112,7 +112,7 @@ integer :: halo_int    ! integer form of halo
 
 logical :: fexist
 
-logical, parameter :: detrend_topography = .true.  ! switch for using detrended
+logical, parameter :: detrend_topography = .false.  ! switch for using detrended
                                                    ! or actual fine-grid topography
                                                    ! to represent subgrid terrain
 

@@ -62,7 +62,7 @@
                                                           !! supported options are: "GFS", "HRRR", "NAM", "RAP", "RRFS".
                                                           !! Default: "GFS"
  
- integer, parameter, public      :: max_tracers=100 !< Maximum number of atmospheric tracers processed.
+ integer, parameter, public      :: max_tracers=200 !< Maximum number of atmospheric tracers processed.
  integer, public                 :: num_tracers !< Number of atmospheric tracers to be processed.
  integer, public                 :: num_tracers_input !< Number of atmospheric tracers in input file.
  

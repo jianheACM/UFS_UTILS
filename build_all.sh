@@ -63,6 +63,9 @@ CMAKE_FLAGS+=" -DBUILD_TESTING=${BUILD_TESTING:-OFF}"
 # Allow users of this script to provide CMake options e.g. -DGFS=ON|OFF to build GFS specific utilities only
 CMAKE_OPTS=${CMAKE_OPTS:-}
 
+CMAKE_OPTS="${CMAKE_OPTS} -Dsfcio_DIR=$HOME/LIBRARIES/sfcio/lib64/cmake/sfcio"
+CMAKE_OPTS="${CMAKE_OPTS} -Dnemsio_DIR=$HOME/LIBRARIES/nemsio/lib64/cmake/nemsio"
+
 # Re-use or create a new BUILD_DIR (Default: create new BUILD_DIR)
 BUILD_DIR=${BUILD_DIR:-"${DIR_ROOT}/build"}
 [[ ${BUILD_CLEAN:-"YES"} =~ [yYtT] ]] && rm -rf "$BUILD_DIR"
