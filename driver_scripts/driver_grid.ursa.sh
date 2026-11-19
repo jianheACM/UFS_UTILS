@@ -116,6 +116,7 @@ if [ $gtype = uniform ]; then
   export binary_lake=1         # return 1 if lake_frac >= lake_cutoff & add_lake=T
   export ocn=${ocn:-"100"}     # use one of  "025", "050", "100", "500". Cannot be empty
 elif [ $gtype = stretch ]; then
+  #unset ocn                   # Atmosphere-only: generate full orography
   export res=384
   export add_lake=true         # Add lake frac and depth to orography data.
   export lake_cutoff=0.50      # return 0 if lake_frac <  lake_cutoff & add_lake=T
